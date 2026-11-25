@@ -5,13 +5,15 @@ class ToggleFavoriteUseCase {
 
   ToggleFavoriteUseCase(this._repository);
 
-  Future<void> call(String placeId) async {
+  Future<bool> call(String placeId) async {
     final ids = await _repository.getIds();
 
     if (ids.contains(placeId)) {
       await _repository.remove(placeId);
-    } else {
-      await _repository.add(placeId);
+      return false;
     }
+
+    await _repository.add(placeId);
+    return true;
   }
 }
