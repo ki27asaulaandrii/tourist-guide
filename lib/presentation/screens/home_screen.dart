@@ -35,19 +35,22 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: places.length,
-        itemBuilder: (context, index) {
-          final place = places[index];
+      body: notifier.isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : ListView.builder(
+              itemCount: places.length,
+              itemBuilder: (context, index) {
+                final place = places[index];
 
-          return PlaceTile(
-            place: place,
-            isFavorite: notifier.isFavorite(place.id),
-            onFavoritePressed: () =>
-                context.read<PlacesNotifier>().toggleFavorite(place.id),
-          );
-        },
-      ),
+                return PlaceTile(
+                  place: place,
+                  isFavorite: notifier.isFavorite(place.id),
+                  onFavoritePressed: () => context
+                      .read<PlacesNotifier>()
+                      .toggleFavorite(place.id),
+                );
+              },
+            ),
     );
   }
 }
