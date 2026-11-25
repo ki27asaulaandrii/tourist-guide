@@ -10,4 +10,10 @@ class Place {
     required this.description,
     required this.rating,
   }) : assert(rating >= 0 && rating <= 5, 'Рейтинг має бути від 0 до 5');
+
+  @override
+  bool operator ==(Object other) => other is Place && other.id == id;
+
+  @override
+  int get hashCode => id.hashCode;
 }
