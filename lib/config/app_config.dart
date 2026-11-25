@@ -1,4 +1,4 @@
 class AppConfig {
-  static const String appTitle = 'Туристичний путівник';
-  static const int loadDelayMs = 0;
+  static const String appTitle = 'Туристичний путівник України';
+  static const int loadDelayMs = 100;
 }
