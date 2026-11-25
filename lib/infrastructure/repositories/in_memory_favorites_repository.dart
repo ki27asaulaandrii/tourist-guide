@@ -5,7 +5,7 @@ class InMemoryFavoritesRepository implements FavoritesRepository {
 
   @override
   Future<Set<String>> getIds() async {
-    return _ids;
+    return Set.of(_ids);
   }
 
   @override
